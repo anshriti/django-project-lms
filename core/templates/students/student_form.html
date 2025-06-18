@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 {% block content %}
-<form action="{% url 'teacher.create' %}" method="post" class="form">
+<form action="{% url 'student.create' %}" method="post" class="form">
     {% csrf_token %}
 
     {% bootstrap_form form %}
