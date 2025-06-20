@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
 
 {% block title %}
-    Assignment List {% endblock %}
+    Assignment List
+{% endblock %}
 
 {% block content %}
 <!-- Breadcrumb Navigation -->
@@ -11,8 +12,6 @@
         <li class="breadcrumb-item active" aria-current="page">Assignments</li>
     </ol>
 </nav>
-
-<!-- Page Header -->
 <section class="container mb-4">
     <div class="row align-items-center mb-4">
         <div class="col-md-6">
@@ -20,10 +19,10 @@
                 <i class="fa-solid fa-chalkboard-teacher me-2 text-primary"></i>
                 Assignment Management
             </h1>
-            <p class="text-muted mb-0">Manage all assignments information and records</p>
+            <p class="text-muted mb-0">Manage all assignment information and records</p>
         </div>
         <div class="col-md-6 text-md-end">
-            <a href="{% url 'teacher.create' %}" class="btn btn-primary">
+            <a href="{% url 'assignment.create' %}" class="btn btn-primary">
                 <i class="fa-solid fa-plus me-2"></i>Add New Assignment
             </a>
         </div>
@@ -36,7 +35,7 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-center">
                         <div>
-                            <h4 class="fw-bold mb-0">{{ assignments.paginator.count }}</h4>
+                            <h4 class="fw-bold mb-0">{{ assignemnts.paginator.count }}</h4>
                             <small>Total Assignments</small>
                         </div>
                         <i class="fa-solid fa-clipboard-list" style="font-size: 2rem; opacity: 0.7;"></i>
@@ -101,9 +100,9 @@
                         <tr>
                             <th class="px-3">S.No.</th>
                             <th>Title</th>
-                            <th>Start date</th>
-                            <th>End date</th>
-                            <th>Full mark</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            <th>Full Mark</th>
                             <th>Subject</th>
                             <th class="text-center">Actions</th>
                         </tr>
@@ -125,22 +124,22 @@
                                 </div>
                             </td>
                             <td>
-                                <a href="tel:{{ assignment.startdate }}" class="text-decoration-none">
-                                    {{ assignment.startdate }}
+                                <a href="date:{{ assignment.start_date }}" class="text-decoration-none">
+                                    {{ assignment.start_date }}
                                 </a>
                             </td>
                             <td>
-                                <a href="tel:{{ assignment.enddate }}" class="text-decoration-none">
+                                <a href="date:{{ assignment.end_date }}" class="text-decoration-none">
                                     {{ assignment.end_date }}
                                 </a>
                             </td>
                             <td>
-                                <a href="tel:{{ assignment.fullmark }}" class="text-decoration-none">
+                                <a href="number:{{ assignment.full_mark }}" class="text-decoration-none">
                                     {{ assignment.full_mark }}
                                 </a>
                             </td>
                             <td>
-                                <a href="tel:{{ assignment.assignment_subject }}" class="text-decoration-none">
+                                <a href="#" class="text-decoration-none">
                                     {{ assignment.assignment_subject }}
                                 </a>
                             </td>
@@ -179,39 +178,39 @@
     {% if is_paginated %}
     <nav aria-label="Assignment pagination" class="mt-4">
         <ul class="pagination justify-content-center">
-            {% if assignments.has_previous %}
+            {% if assignemnts.has_previous %}
                 <li class="page-item">
                     <a class="page-link" href="?page=1">
                         <i class="fa-solid fa-angle-double-left"></i>
                     </a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ assignments.previous_page_number }}">
+                    <a class="page-link" href="?page={{ assignemnts.previous_page_number }}">
                         <i class="fa-solid fa-angle-left"></i>
                     </a>
                 </li>
             {% endif %}
 
-            {% for num in assignments.paginator.page_range %}
-                {% if assignments.number == num %}
+            {% for num in assignemnts.paginator.page_range %}
+                {% if assignemnts.number == num %}
                     <li class="page-item active">
                         <span class="page-link">{{ num }}</span>
                     </li>
-                {% elif num > assignments.number|add:'-3' and num < assignments.number|add:'3' %}
+                {% elif num > assignemnts.number|add:'-3' and num < assignemnts.number|add:'3' %}
                     <li class="page-item">
                         <a class="page-link" href="?page={{ num }}">{{ num }}</a>
                     </li>
                 {% endif %}
             {% endfor %}
 
-            {% if assignments.has_next %}
+            {% if assignemnts.has_next %}
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ assignments.next_page_number }}">
+                    <a class="page-link" href="?page={{ assignemnts.next_page_number }}">
                         <i class="fa-solid fa-angle-right"></i>
                     </a>
                 </li>
                 <li class="page-item">
-                    <a class="page-link" href="?page={{ assignments.paginator.num_pages }}">
+                    <a class="page-link" href="?page={{ assignemnts.paginator.num_pages }}">
                         <i class="fa-solid fa-angle-double-right"></i>
                     </a>
                 </li>
@@ -221,4 +220,3 @@
     {% endif %}
 </section>
 {% endblock %}
-

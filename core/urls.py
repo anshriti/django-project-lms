@@ -13,6 +13,9 @@ from core.views import (
    StudentUpdateView,
    AssignmentListView,
    AssignmentCreateView,
+   AssignmentDetailView,
+   AssignmentUpdateView,
+   AssignmentDeleteView,
 )
 
 urlpatterns = [
@@ -36,5 +39,8 @@ urlpatterns = [
    # Assigment URLs
    path('assignment/list/', AssignmentListView.as_view(), name='assignment.index'),
    path('assignment/create/', AssignmentCreateView.as_view(), name='assignment.create'),
+   path('assignment/<int:pk>/detail/', AssignmentDetailView.as_view(), name='assignment.detail'),
+   path('assignment/<int:pk>/edit/', AssignmentUpdateView.as_view(), name='assignment.edit'),
+   path('assignment/<int:pk>/delete/', AssignmentDeleteView.as_view(), name='assignment.delete'),
    
 ]
