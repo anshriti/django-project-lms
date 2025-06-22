@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-ns$v&myixh&2d()-0%ha%-drdad(@r!pc@d&038i@dzsu+918&
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    "django-project-lms-fy3u.onrender.com"
+]
 
 LOGIN_REDIRECT_URL = 'profile'
 LOGOUT_REDIRECT_URL = 'login'
